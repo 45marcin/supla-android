@@ -36,7 +36,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.collect
-import org.supla.android.FragmentPopup
 import org.supla.android.R
 import org.supla.android.SuplaApp
 import org.supla.android.profile.ProfileIdNew
@@ -72,12 +71,10 @@ class ProfilesFragment: Fragment() {
     }
 
     private fun openEditProfileView(profileId: Long) {
-        //val navId = if(profileId == ProfileIdNew) R.id.newProfile else R.id.editProfile
-        FragmentPopup().show(
-            childFragmentManager, FragmentPopup.TAG)
-        //val args = AuthFragmentArgs(profileId, true, false)
-        //navCoordinator.wantsBack = true
-        //findNavController().navigate(navId, args.toBundle())
+        val navId = if(profileId == ProfileIdNew) R.id.newProfile else R.id.editProfile
+        val args = AuthFragmentArgs(profileId, true, false)
+        navCoordinator.wantsBack = true
+        findNavController().navigate(navId, args.toBundle())
     }
 
     override fun onCreateView(
